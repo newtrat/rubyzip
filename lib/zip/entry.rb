@@ -234,7 +234,7 @@ module Zip
       unless @header_signature == ::Zip::LOCAL_ENTRY_SIGNATURE
         raise ::Zip::Error, "Zip local header magic not found at location '#{local_header_offset}'"
       end
-      set_time(@last_mod_date, @last_mod_time)
+      # set_time(@last_mod_date, @last_mod_time)
 
       @name = io.read(@name_length)
       extra = io.read(@extra_length)
@@ -362,7 +362,7 @@ module Zip
       check_c_dir_entry_static_header_length(static_sized_fields_buf)
       unpack_c_dir_entry(static_sized_fields_buf)
       check_c_dir_entry_signature
-      set_time(@last_mod_date, @last_mod_time)
+      # set_time(@last_mod_date, @last_mod_time)
       @name = io.read(@name_length)
       read_c_dir_extra_field(io)
       @comment = io.read(@comment_length)
